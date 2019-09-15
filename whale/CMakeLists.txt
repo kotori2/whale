@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.4.1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(LIBRARY_NAME "whale")
+set(LIBRARY_NAME "whale.edxp")
 
 enable_language(ASM)
 SET(CMAKE_ASM_FLAGS "${CFLAGS}  -x assembler-with-cpp")
@@ -12,7 +12,8 @@ if (CMAKE_SYSTEM_NAME MATCHES "^Android")
     set(PLATFORM "Android")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -s -Wl,--gc-sections")
+    #set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -s -Wl,--gc-sections")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--gc-sections")
     add_definitions("-DWHALE_ANDROID_AUTO_LOAD")
     message("Building Whale for Android(${CMAKE_SYSTEM_PROCESSOR})...")
 elseif (PLATFORM STREQUAL "IOS")
